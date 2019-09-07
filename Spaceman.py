@@ -1,4 +1,4 @@
-Helped by Francis
+# Helped by Francis
 import random
 
 def load_word():
@@ -25,13 +25,11 @@ def is_word_guessed(secret_word, letters_guessed):
     Returns:
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
-    # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
     # True if letter guessed == Secret Word, False otherwise
-    for letters in secret_word:
-        if letters in letters_guessed:
-            continue
-        else:
+    for letter in secret_word:
+        if letter != letters_guessed:
             return False
+
     return True
 
 def get_guessed_word(secret_word, letters_guessed):
@@ -44,18 +42,17 @@ def get_guessed_word(secret_word, letters_guessed):
         string: letters and underscores.  For letters in the word that the user has guessed correctly, the string should contain the letter at the correct position.  For letters in the word that the user has not yet guessed, show an _ (underscore) instead.
     '''
     #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
-    for letters in secret_word:
-        if letters in letters_guessed:
-            letters_guessed = "[]"
-            print (letters_guessed.split(","))
+    string = ""
 
-
-
-    # for char in range(len(secret_word)):
-    #     if current_guess == secret_word[char]
-
-    pass
-
+    for index in secret_word:
+        # if letter in letters_guessed:
+        for letter in letters_guessed:
+            if index in letter:
+                string += letter
+        if index not in string:
+            string += "_"
+    print (string)        
+    return string
 
 def is_guess_in_word(guess, secret_word):
     '''
@@ -97,6 +94,8 @@ def spaceman(secret_word):
 
 
 #These function calls that will start the game
-letters_guessed = []
-secret_word = load_word()
-spaceman(load_word())
+letters_guessed = ["a"]
+secret_word = "apple"
+get_guessed_word(secret_word, letters_guessed)
+# secret_word = load_word()
+# spaceman(load_word())
