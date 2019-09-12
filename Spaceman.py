@@ -31,7 +31,7 @@ def is_word_guessed(secret_word, letters_guessed):
             return False
 
     return True
-
+#TODO: Show guessed letter (so far)
 def get_guessed_word(secret_word, letters_guessed):
     '''
     A function that is used to get a string showing the letters guessed so far in the secret word and underscores for letters that have not been guessed yet.
@@ -52,6 +52,7 @@ def get_guessed_word(secret_word, letters_guessed):
     print (string)
     return string
 
+#TODO: Check if guessed letter is in/not in secret_word
 def is_guess_in_word(guess, secret_word):
     '''
     A function to check if the guessed letter is in the secret word
@@ -61,7 +62,7 @@ def is_guess_in_word(guess, secret_word):
     Returns:
         bool: True if the guess is in the secret_word, False otherwise
     '''
-    #TODO: check if the letter guess is in the secret word
+
     if guess in secret_word:
         return True
     else:
@@ -75,7 +76,7 @@ def spaceman(secret_word):
     '''
     remaining_guesses = len(secret_word)
     letters_guessed = []
-
+#TODO: Ask player to guess 1 letter/round and check if only 1 letter
     running = True
     while running:
         guessing = True
@@ -86,7 +87,7 @@ def spaceman(secret_word):
                 guessing = False
             else:
                 print("Incorrect Input")
-
+#TODO: Show game information based on project spec
         guessed_word = get_guessed_word(secret_word, letters_guessed)
         if is_guess_in_word(guess, secret_word):
              print("Correct Guess")
@@ -96,21 +97,19 @@ def spaceman(secret_word):
             print("Guesses Left: " + str(remaining_guesses))
 
         print(guessed_word)
-
+#TODO: Check if game has been Won/Lost
         if is_word_guessed(secret_word, letters_guessed):
             print("Game Won")
             running = False
         elif remaining_guesses == 0:
-            print("Game Lost")
+            print("Game Lost " + secret_word)
             running = False
 
 
 
-#TODO: Show game information based on project spec
-#TODO: Ask player to guess 1 letter/round and check if only 1 letter
-#TODO: Check if guessed letter is in/not in secret_word
-#TODO: Show guessed letter (so far)
-#TODO: Check if game has been Won/Lost
+
+
+
 
 
 
@@ -120,9 +119,6 @@ def spaceman(secret_word):
 
 
 #These function calls that will start the game
-# letters_guessed = ["a"]
-# secret_word = "apple"
-# get_guessed_word(secret_word, letters_guessed)
 running = True
 while running:
     secret_word = load_word()
